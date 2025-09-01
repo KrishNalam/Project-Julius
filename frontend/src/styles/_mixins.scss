@@ -1,0 +1,24 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin button-reset {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+@mixin card {
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow;
+    padding: $spacing-lg;
+}

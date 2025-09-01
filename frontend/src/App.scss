@@ -1,0 +1,58 @@
+@import './styles/variables';
+@import './styles/mixins';
+
+.app {
+    min-height: 100vh;
+    padding: $spacing-lg;
+
+    @media (min-width: 768px) {
+        padding: $spacing-xl;
+    }
+}
+
+.header {
+    @include flex-between;
+    margin-bottom: $spacing-xl;
+
+    h1 {
+        color: $primary-color;
+        font-size: 1.875rem;
+        font-weight: 700;
+    }
+}
+
+.calendar-btn {
+    @include button-reset;
+    @include flex-center;
+    gap: $spacing-sm;
+    background-color: $primary-color;
+    color: white;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: $primary-light;
+    }
+}
+
+.main-content {
+    display: grid;
+    gap: $spacing-xl;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.task-section {
+    @include card;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $spacing-lg;
+    color: $dark-color;
+}

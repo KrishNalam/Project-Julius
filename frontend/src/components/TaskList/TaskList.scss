@@ -1,0 +1,112 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+}
+
+.task-item {
+    @include flex-between;
+    padding: $spacing-md;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $shadow-sm;
+    border-left: 4px solid $gray-color;
+
+    &.high-priority {
+        border-left-color: $danger-color;
+    }
+
+    &.medium-priority {
+        border-left-color: $warning-color;
+    }
+
+    &.low-priority {
+        border-left-color: $secondary-color;
+    }
+
+    &.completed {
+        opacity: 0.7;
+
+        .task-content {
+            text-decoration: line-through;
+        }
+    }
+}
+
+.task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+}
+
+.task-title {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.task-details {
+    display: flex;
+    gap: $spacing-md;
+    font-size: 0.875rem;
+    color: $gray-color;
+}
+
+.task-actions {
+    display: flex;
+    gap: $spacing-xs;
+    align-items: center;
+}
+
+.task-btn {
+    @include button-reset;
+    padding: $spacing-xs;
+    border-radius: $border-radius;
+    color: $gray-color;
+    transition: color 0.2s;
+
+    &:hover {
+        color: $dark-color;
+    }
+
+    &.complete-btn:hover {
+        color: $secondary-color;
+    }
+
+    &.delete-btn:hover {
+        color: $danger-color;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: $spacing-xl;
+    color: $gray-color;
+}
+
+.calendar-section {
+    margin-top: $spacing-xl;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $gray-color;
+}
+
+.calendar-btn {
+    @include button-reset;
+    @include flex-center;
+    gap: $spacing-sm;
+    background-color: $primary-color;
+    color: white;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: $spacing-md;
+
+    &:hover {
+        background-color: $primary-light;
+    }
+}

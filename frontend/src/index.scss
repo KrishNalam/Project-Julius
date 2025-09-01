@@ -1,0 +1,16 @@
+@import './styles/variables';
+@import './styles/mixins';
+@import './styles/globals';
+
+// Global styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $light-color;
+    color: $dark-color;
+    line-height: 1.6;
+}
