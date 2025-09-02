@@ -18,7 +18,9 @@
 }
 
 @mixin card {
+    background: $secondary-dark-color;
     border-radius: $border-radius-lg;
+    //border: $border-white-rounded;
     box-shadow: $shadow;
     padding: $spacing-lg;
 }

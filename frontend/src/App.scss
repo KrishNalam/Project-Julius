@@ -21,22 +21,6 @@
     }
 }
 
-.calendar-btn {
-    @include button-reset;
-    @include flex-center;
-    gap: $spacing-sm;
-    background-color: $primary-color;
-    color: white;
-    padding: $spacing-sm $spacing-md;
-    border-radius: $border-radius;
-    font-weight: 500;
-    transition: background-color 0.2s;
-
-    &:hover {
-        background-color: $primary-light;
-    }
-}
-
 .main-content {
     display: grid;
     gap: $spacing-xl;
@@ -54,5 +38,5 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: $spacing-lg;
-    color: $dark-color;
+    color: $light-color;
 }

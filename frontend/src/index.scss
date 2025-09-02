@@ -10,7 +10,10 @@
 }
 
 body {
-    background-color: $light-color;
-    color: $dark-color;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    background-color: $dark-color;
+    color: $light-color;
     line-height: 1.6;
 }

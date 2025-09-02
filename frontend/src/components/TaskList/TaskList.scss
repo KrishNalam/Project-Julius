@@ -86,27 +86,3 @@
     padding: $spacing-xl;
     color: $gray-color;
 }
-
-.calendar-section {
-    margin-top: $spacing-xl;
-    padding-top: $spacing-lg;
-    border-top: 1px solid $gray-color;
-}
-
-.calendar-btn {
-    @include button-reset;
-    @include flex-center;
-    gap: $spacing-sm;
-    background-color: $primary-color;
-    color: white;
-    padding: $spacing-sm $spacing-md;
-    border-radius: $border-radius;
-    font-weight: 500;
-    transition: background-color 0.2s;
-    width: 100%;
-    margin-top: $spacing-md;
-
-    &:hover {
-        background-color: $primary-light;
-    }
-}

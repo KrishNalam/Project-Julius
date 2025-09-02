@@ -29,68 +29,10 @@ function App() {
         setTasks(tasks.filter((task) => task.id !== id))
     }
 
-    const exportToCalendar = () => {
-        // Simple implementation - in a real app, this would use the Google Calendar API
-        const calendarEvents = tasks
-            .filter((task) => task.dueDate && !task.completed)
-            .map((task) => {
-                const startDate = new Date(task.dueDate)
-                const endDate = new Date(startDate)
-                endDate.setHours(endDate.getHours() + 1) // 1 hour event
-
-                return {
-                    title: task.title,
-                    start: startDate.toISOString().replace(/-|:|\.\d+/g, ''),
-                    end: endDate.toISOString().replace(/-|:|\.\d+/g, ''),
-                    details: `Priority: ${task.priority}`,
-                }
-            })
-
-        if (calendarEvents.length === 0) {
-            alert('No tasks with due dates to export!')
-            return
-        }
-
-        // Create a downloadable ICS file
-        let icsContent =
-            'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//hacksw/handcal//NONSGML v1.0//EN\n'
-
-        calendarEvents.forEach((event) => {
-            icsContent += `BEGIN:VEVENT\n`
-            icsContent += `UID:${Date.now()}@taskflow\n`
-            icsContent += `DTSTAMP:${new Date()
-                .toISOString()
-                .replace(/-|:|\.\d+/g, '')}\n`
-            icsContent += `DTSTART:${event.start}\n`
-            icsContent += `DTEND:${event.end}\n`
-            icsContent += `SUMMARY:${event.title}\n`
-            icsContent += `DESCRIPTION:${event.details}\n`
-            icsContent += `END:VEVENT\n`
-        })
-
-        icsContent += 'END:VCALENDAR'
-
-        // Download the file
-        const blob = new Blob([icsContent], {
-            type: 'text/calendar;charset=utf-8',
-        })
-        const link = document.createElement('a')
-        link.href = URL.createObjectURL(blob)
-        link.download = 'taskflow-tasks.ics'
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-
-        alert(
-            `${calendarEvents.length} task(s) exported. You can import this ICS file into Google Calendar.`
-        )
-    }
-
     return (
         <div className="app">
             <header className="header">
-                <h1>TaskFlow</h1>
-                <p>Simple task management with calendar integration</p>
+                <h1>Project Julius</h1>
             </header>
 
             <div className="main-content">
@@ -105,7 +47,6 @@ function App() {
                         tasks={tasks}
                         onToggleTask={toggleTask}
                         onDeleteTask={deleteTask}
-                        onExportToCalendar={exportToCalendar}
                     />
                 </div>
             </div>

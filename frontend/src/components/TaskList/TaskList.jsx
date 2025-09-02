@@ -11,19 +11,6 @@ const TaskList = ({
         return new Date(dateString).toLocaleDateString()
     }
 
-    const getPriorityClass = (priority) => {
-        switch (priority) {
-            case 'high':
-                return 'high-priority'
-            case 'medium':
-                return 'medium-priority'
-            case 'low':
-                return 'low-priority'
-            default:
-                return ''
-        }
-    }
-
     if (tasks.length === 0) {
         return (
             <div className="empty-state">
@@ -46,7 +33,6 @@ const TaskList = ({
                             <div className="task-title">{task.title}</div>
                             <div className="task-details">
                                 <span>Due: {formatDate(task.dueDate)}</span>
-                                <span>Priority: {task.priority}</span>
                             </div>
                         </div>
                         <div className="task-actions">
