@@ -1,0 +1,42 @@
+@import './styles/variables';
+@import './styles/mixins';
+
+.app {
+    min-height: 100vh;
+    padding: $spacing-lg;
+
+    @media (min-width: 768px) {
+        padding: $spacing-xl;
+    }
+}
+
+.header {
+    @include flex-between;
+    margin-bottom: $spacing-xl;
+
+    h1 {
+        color: $primary-color;
+        font-size: 1.875rem;
+        font-weight: 700;
+    }
+}
+
+.main-content {
+    display: grid;
+    gap: $spacing-xl;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.task-section {
+    @include card;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $spacing-lg;
+    color: $light-color;
+}

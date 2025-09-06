@@ -1,35 +1,57 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import TaskForm from './components/TaskForm/TaskForm'
+import TaskList from './components/TaskList/TaskList'
+import './App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [tasks, setTasks] = useState([])
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const addTask = (task) => {
+        setTasks([
+            ...tasks,
+            {
+                id: Date.now(),
+                ...task,
+                completed: false,
+            },
+        ])
+    }
+
+    const toggleTask = (id) => {
+        setTasks(
+            tasks.map((task) =>
+                task.id === id ? { ...task, completed: !task.completed } : task
+            )
+        )
+    }
+
+    const deleteTask = (id) => {
+        setTasks(tasks.filter((task) => task.id !== id))
+    }
+
+    return (
+        <div className="app">
+            <header className="header">
+                <h1>Project Julius</h1>
+            </header>
+
+            <div className="main-content">
+                <div className="task-section">
+                    <h2 className="section-title">Add New Task</h2>
+                    <TaskForm onAddTask={addTask} />
+                </div>
+
+                <div className="task-section">
+                    <h2 className="section-title">Your Tasks</h2>
+                    <TaskList
+                        tasks={tasks}
+                        onToggleTask={toggleTask}
+                        onDeleteTask={deleteTask}
+                    />
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default App

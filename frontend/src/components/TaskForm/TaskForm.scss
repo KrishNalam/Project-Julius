@@ -1,0 +1,53 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+}
+
+label {
+    font-weight: 500;
+    color: $light-color;
+}
+
+input,
+select,
+textarea {
+    padding: $spacing-sm;
+    border: 1px solid $gray-color;
+    border-radius: $border-radius;
+    font-family: inherit;
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.submit-btn {
+    @include button-reset;
+    background-color: $secondary-color;
+    color: white;
+    padding: $spacing-sm;
+    border-radius: $border-radius;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: darken($secondary-color, 10%);
+    }
+}
