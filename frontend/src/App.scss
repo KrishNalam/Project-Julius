@@ -13,11 +13,73 @@
 .header {
     @include flex-between;
     margin-bottom: $spacing-xl;
+    flex-wrap: wrap;
+    gap: $spacing-md;
 
     h1 {
         color: $primary-color;
         font-size: 1.875rem;
         font-weight: 700;
+    }
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    margin-left: $spacing-md;
+    padding-left: $spacing-md;
+    border-left: 1px solid $secondary-dark-color;
+}
+
+.user-email {
+    font-size: 0.875rem;
+    color: $gray-color;
+}
+
+.app-loading {
+    @include flex-center;
+    min-height: 100vh;
+    color: $primary-color;
+
+    .spin {
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.nav-btn {
+    @include button-reset;
+    @include flex-center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius;
+    color: $gray-color;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition:
+        color 0.2s,
+        background-color 0.2s;
+
+    &:hover {
+        color: $light-color;
+        background-color: $secondary-dark-color;
+    }
+
+    &.active {
+        color: $light-color;
+        background-color: $primary-color;
     }
 }
 

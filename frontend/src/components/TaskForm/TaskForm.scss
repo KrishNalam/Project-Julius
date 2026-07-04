@@ -11,6 +11,12 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-xs;
+    flex: 1;
+}
+
+.form-row {
+    display: flex;
+    gap: $spacing-md;
 }
 
 label {
@@ -25,17 +31,50 @@ textarea {
     border: 1px solid $gray-color;
     border-radius: $border-radius;
     font-family: inherit;
+    background-color: $dark-color;
+    color: $light-color;
+    color-scheme: dark;
+
+    &::placeholder {
+        color: $gray-color;
+    }
 
     &:focus {
         outline: none;
         border-color: $primary-color;
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     }
 }
 
 textarea {
     resize: vertical;
     min-height: 80px;
+}
+
+.prep-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+}
+
+.prep-toggle,
+.prep-hours {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: 0.875rem;
+    color: $light-color;
+    cursor: pointer;
+
+    input[type='checkbox'] {
+        accent-color: $primary-color;
+    }
+
+    input[type='number'] {
+        width: 4.5rem;
+        padding: $spacing-xs $spacing-sm;
+    }
 }
 
 .submit-btn {

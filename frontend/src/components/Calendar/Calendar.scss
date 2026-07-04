@@ -1,0 +1,288 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.calendar-page {
+    display: grid;
+    gap: $spacing-xl;
+    align-items: start;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.card {
+    @include card;
+}
+
+// Header
+.calendar-header {
+    @include flex-between;
+    margin-bottom: $spacing-lg;
+}
+
+.calendar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $light-color;
+}
+
+.calendar-controls {
+    display: flex;
+    gap: $spacing-xs;
+}
+
+.control-btn {
+    @include button-reset;
+    @include flex-center;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius;
+    color: $gray-color;
+    font-weight: 500;
+    transition:
+        color 0.2s,
+        background-color 0.2s;
+
+    &:hover {
+        color: $light-color;
+        background-color: $dark-color;
+    }
+}
+
+.today-btn {
+    font-size: 0.875rem;
+    color: $primary-color;
+}
+
+// Grid
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-xs;
+}
+
+.weekday-row {
+    margin-bottom: $spacing-xs;
+}
+
+.weekday {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $gray-color;
+    padding: $spacing-xs 0;
+}
+
+.day-cell {
+    @include button-reset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xs;
+    min-height: 90px;
+    padding: $spacing-xs;
+    background-color: $dark-color;
+    border: 1px solid transparent;
+    border-radius: $border-radius;
+    text-align: left;
+    transition:
+        border-color 0.2s,
+        background-color 0.2s;
+    overflow: hidden;
+
+    &:hover {
+        border-color: $gray-color;
+    }
+
+    &.outside {
+        opacity: 0.4;
+    }
+
+    &.selected {
+        border-color: $primary-color;
+    }
+
+    &.today .day-number {
+        background-color: $primary-color;
+        color: white;
+    }
+}
+
+.day-number {
+    @include flex-center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: $light-color;
+}
+
+.day-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+.task-chip {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: white;
+    padding: 1px $spacing-xs;
+    border-radius: $border-radius-sm;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: $secondary-dark-color;
+    border-left: 3px solid $gray-color;
+
+    &.high {
+        border-left-color: $danger-color;
+    }
+
+    &.medium {
+        border-left-color: $warning-color;
+    }
+
+    &.low {
+        border-left-color: $secondary-color;
+    }
+
+    &.done {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    &.event {
+        border-left-color: $primary-color;
+    }
+
+    &.prep {
+        border-left-color: #14b8a6;
+        font-style: italic;
+    }
+}
+
+.more-count {
+    font-size: 0.6875rem;
+    color: $gray-color;
+}
+
+// Day detail panel
+.day-panel {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+}
+
+.panel-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $light-color;
+    margin-top: $spacing-sm;
+}
+
+.no-tasks {
+    color: $gray-color;
+    font-size: 0.875rem;
+}
+
+.day-task-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+}
+
+.day-task {
+    @include flex-between;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    background-color: $dark-color;
+    border-radius: $border-radius;
+    border-left: 4px solid $gray-color;
+
+    &.high {
+        border-left-color: $danger-color;
+    }
+
+    &.medium {
+        border-left-color: $warning-color;
+    }
+
+    &.low {
+        border-left-color: $secondary-color;
+    }
+
+    &.completed {
+        opacity: 0.7;
+
+        .day-task-info {
+            text-decoration: line-through;
+        }
+    }
+
+    &.event {
+        border-left-color: $primary-color;
+    }
+
+    &.prep {
+        border-left-color: #14b8a6;
+
+        .slot-time {
+            color: #14b8a6;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+        }
+    }
+}
+
+.day-task-source {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: 0.75rem;
+    color: $primary-color;
+    margin-top: 2px;
+}
+
+.day-task-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.day-task-title {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: $light-color;
+}
+
+.day-task-desc {
+    font-size: 0.8125rem;
+    color: $gray-color;
+}
+
+.day-task-actions {
+    display: flex;
+    gap: $spacing-xs;
+    flex-shrink: 0;
+}
+
+.task-btn {
+    @include button-reset;
+    padding: $spacing-xs;
+    border-radius: $border-radius;
+    color: $gray-color;
+    transition: color 0.2s;
+
+    &.complete-btn:hover {
+        color: $secondary-color;
+    }
+
+    &.delete-btn:hover {
+        color: $danger-color;
+    }
+}

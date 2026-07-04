@@ -1,0 +1,252 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.documents-page {
+    display: grid;
+    gap: $spacing-xl;
+    align-items: start;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    @include card;
+}
+
+.upload-hint {
+    color: $gray-color;
+    font-size: 0.875rem;
+    margin-bottom: $spacing-md;
+}
+
+// Dropzone
+.dropzone {
+    @include flex-center;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding: $spacing-xl;
+    border: 2px dashed $gray-color;
+    border-radius: $border-radius-lg;
+    color: $gray-color;
+    cursor: pointer;
+    text-align: center;
+    transition:
+        border-color 0.2s,
+        color 0.2s,
+        background-color 0.2s;
+
+    &:hover,
+    &.dragging {
+        border-color: $primary-color;
+        color: $light-color;
+        background-color: rgba(99, 102, 241, 0.05);
+    }
+
+    .browse {
+        color: $primary-color;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    .file-types {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-msg {
+    margin-top: $spacing-md;
+    padding: $spacing-sm $spacing-md;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid $danger-color;
+    border-radius: $border-radius;
+    color: $danger-color;
+    font-size: 0.875rem;
+}
+
+// Parse result
+.parse-result {
+    margin-top: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+}
+
+.result-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $light-color;
+}
+
+.found-dates {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.found-date {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    background-color: $dark-color;
+    border-radius: $border-radius;
+    cursor: pointer;
+
+    input[type='checkbox'] {
+        margin-top: 3px;
+        accent-color: $primary-color;
+    }
+}
+
+.found-date-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.found-date-day {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: $light-color;
+}
+
+.found-date-context {
+    font-size: 0.8125rem;
+    color: $gray-color;
+}
+
+.import-btn {
+    @include button-reset;
+    @include flex-center;
+    gap: $spacing-xs;
+    background-color: $secondary-color;
+    color: white;
+    padding: $spacing-sm;
+    border-radius: $border-radius;
+    font-weight: 500;
+    transition:
+        background-color 0.2s,
+        opacity 0.2s;
+
+    &:hover:not(:disabled) {
+        background-color: darken($secondary-color, 10%);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+// Imported documents
+.empty-msg {
+    color: $gray-color;
+    font-size: 0.875rem;
+}
+
+.document-group {
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.document-header {
+    @include flex-between;
+    margin-bottom: $spacing-sm;
+}
+
+.document-name {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-weight: 600;
+    color: $light-color;
+    font-size: 0.9375rem;
+}
+
+.document-events {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+}
+
+.doc-event {
+    @include flex-between;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    background-color: $dark-color;
+    border-radius: $border-radius;
+    border-left: 4px solid $primary-color;
+}
+
+.doc-event-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.doc-event-date {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: $light-color;
+}
+
+.doc-event-context {
+    font-size: 0.8125rem;
+    color: $gray-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-btn {
+    @include button-reset;
+    padding: $spacing-xs;
+    border-radius: $border-radius;
+    color: $gray-color;
+    transition: color 0.2s;
+    flex-shrink: 0;
+
+    &.delete-btn:hover {
+        color: $danger-color;
+    }
+
+    &.flag-btn:hover {
+        color: $warning-color;
+    }
+
+    &.flag-btn.flagged {
+        color: $warning-color;
+
+        svg {
+            fill: $warning-color;
+        }
+    }
+}
+
+.doc-event .task-btn,
+.found-date .task-btn {
+    display: inline-flex;
+}

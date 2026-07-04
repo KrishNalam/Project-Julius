@@ -10,7 +10,7 @@
 .task-item {
     @include flex-between;
     padding: $spacing-md;
-    background: white;
+    background: $dark-color;
     border-radius: $border-radius;
     box-shadow: $shadow-sm;
     border-left: 4px solid $gray-color;
@@ -46,6 +46,12 @@
 .task-title {
     font-weight: 500;
     font-size: 1rem;
+    color: $light-color;
+}
+
+.task-description {
+    font-size: 0.875rem;
+    color: $gray-color;
 }
 
 .task-details {
@@ -53,6 +59,11 @@
     gap: $spacing-md;
     font-size: 0.875rem;
     color: $gray-color;
+
+    .overdue {
+        color: $danger-color;
+        font-weight: 500;
+    }
 }
 
 .task-actions {
@@ -69,7 +80,7 @@
     transition: color 0.2s;
 
     &:hover {
-        color: $dark-color;
+        color: $light-color;
     }
 
     &.complete-btn:hover {
@@ -78,6 +89,18 @@
 
     &.delete-btn:hover {
         color: $danger-color;
+    }
+
+    &.flag-btn:hover {
+        color: $warning-color;
+    }
+
+    &.flag-btn.flagged {
+        color: $warning-color;
+
+        svg {
+            fill: $warning-color;
+        }
     }
 }
 

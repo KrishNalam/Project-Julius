@@ -1,0 +1,217 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.planner-page {
+    display: grid;
+    gap: $spacing-xl;
+    align-items: start;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    @include card;
+}
+
+// Rule form
+.rule-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $dark-color;
+    margin-bottom: $spacing-lg;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xs;
+        flex: 1;
+    }
+
+    .form-row {
+        display: flex;
+        gap: $spacing-md;
+    }
+}
+
+.rule-hint {
+    font-size: 0.8125rem;
+    color: $gray-color;
+}
+
+.day-picker {
+    display: flex;
+    gap: $spacing-xs;
+    flex-wrap: wrap;
+}
+
+.day-pill {
+    @include button-reset;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 999px;
+    border: 1px solid $gray-color;
+    color: $gray-color;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition: all 0.15s;
+
+    &:hover {
+        border-color: $primary-color;
+        color: $light-color;
+    }
+
+    &.on {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: white;
+    }
+}
+
+.rule-error {
+    padding: $spacing-sm $spacing-md;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid $danger-color;
+    border-radius: $border-radius;
+    color: $danger-color;
+    font-size: 0.875rem;
+}
+
+.add-rule-btn {
+    @include button-reset;
+    @include flex-center;
+    gap: $spacing-xs;
+    background-color: $primary-color;
+    color: white;
+    padding: $spacing-sm;
+    border-radius: $border-radius;
+    font-weight: 500;
+    transition: background-color 0.2s, opacity 0.2s;
+
+    &:hover:not(:disabled) {
+        background-color: darken($primary-color, 8%);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: wait;
+    }
+}
+
+// Rule list
+.rule-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+}
+
+.rule-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    background-color: $dark-color;
+    border-radius: $border-radius;
+
+    .rule-icon {
+        color: $primary-color;
+        flex-shrink: 0;
+    }
+
+    .rule-text {
+        flex: 1;
+        font-size: 0.9375rem;
+        color: $light-color;
+    }
+}
+
+// Schedule
+.schedule-section .section-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+}
+
+.warnings {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-md;
+}
+
+.warning {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid $warning-color;
+    border-radius: $border-radius;
+    color: $warning-color;
+    font-size: 0.875rem;
+
+    svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+}
+
+.schedule-day {
+    margin-bottom: $spacing-md;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.schedule-date {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: $gray-color;
+    margin-bottom: $spacing-xs;
+}
+
+.slot {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-sm;
+    background-color: $dark-color;
+    border-radius: $border-radius;
+    border-left: 4px solid #14b8a6; // teal — prep time
+    margin-bottom: $spacing-xs;
+}
+
+.slot-time {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #14b8a6;
+    flex-shrink: 0;
+}
+
+.slot-title {
+    font-size: 0.9375rem;
+    color: $light-color;
+}
+
+.empty-msg {
+    color: $gray-color;
+    font-size: 0.875rem;
+}
+
+.task-btn {
+    @include button-reset;
+    padding: $spacing-xs;
+    border-radius: $border-radius;
+    color: $gray-color;
+    transition: color 0.2s;
+
+    &.delete-btn:hover {
+        color: $danger-color;
+    }
+}

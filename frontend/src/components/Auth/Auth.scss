@@ -1,0 +1,111 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.auth-page {
+    @include flex-center;
+    min-height: 100vh;
+    padding: $spacing-lg;
+}
+
+.auth-card {
+    @include card;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+}
+
+.auth-brand {
+    color: $primary-color;
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.auth-subtitle {
+    color: $gray-color;
+    font-size: 0.9375rem;
+    text-align: center;
+    margin-bottom: $spacing-sm;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xs;
+    }
+
+    input {
+        padding: $spacing-sm;
+        border: 1px solid $gray-color;
+        border-radius: $border-radius;
+        font-family: inherit;
+        background-color: $dark-color;
+        color: $light-color;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+    }
+
+    .submit-btn {
+        @include button-reset;
+        @include flex-center;
+        background-color: $primary-color;
+        color: white;
+        padding: $spacing-sm;
+        border-radius: $border-radius;
+        font-weight: 500;
+        transition: background-color 0.2s, opacity 0.2s;
+
+        &:hover:not(:disabled) {
+            background-color: darken($primary-color, 8%);
+        }
+
+        &:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+    }
+}
+
+.auth-error {
+    padding: $spacing-sm $spacing-md;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid $danger-color;
+    border-radius: $border-radius;
+    color: $danger-color;
+    font-size: 0.875rem;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 0.875rem;
+    color: $gray-color;
+
+    button {
+        @include button-reset;
+        color: $primary-color;
+        font-weight: 500;
+        text-decoration: underline;
+        font-size: inherit;
+    }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.google-sync {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+}
+
+.sync-btn {
+    @include button-reset;
+    @include flex-center;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius;
+    background-color: $secondary-dark-color;
+    color: $light-color;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.2s, opacity 0.2s;
+
+    &:hover:not(:disabled) {
+        background-color: lighten($secondary-dark-color, 5%);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: wait;
+    }
+
+    &.connect {
+        background-color: $primary-color;
+        color: white;
+
+        &:hover:not(:disabled) {
+            background-color: darken($primary-color, 8%);
+        }
+    }
+
+    &.subtle {
+        color: $gray-color;
+    }
+}
+
+.sync-connected {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $secondary-color;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.sync-note,
+.sync-message {
+    font-size: 0.8125rem;
+    color: $gray-color;
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
